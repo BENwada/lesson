@@ -8,7 +8,7 @@ import axios from "axios";
 const Datatable = ({ columns }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
-  const [list, setList] = useState();
+  const [list, setList] = useState([]);
   const { data } = useFetch(`/${path}`);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const Datatable = ({ columns }) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        {path.toUpperCase()}
+        {path.charAt(0).toUpperCase() + path.slice(1).toLowerCase()}
         <Link to={`/${path}/new`} className="link">
           Add New
         </Link>
